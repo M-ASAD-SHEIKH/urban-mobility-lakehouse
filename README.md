@@ -16,7 +16,7 @@ _Turning raw monthly taxi trip files into clean, governed tables and a dashboard
 - <a href="#dashboard">Dashboard</a>
 - <a href="#governance--lineage">Governance & Lineage</a>
 - <a href="#how-to-run-this-project">How to Run This Project</a>
-- <a href="#limitations--next-steps">Limitations & Next Steps</a>
+- <a href="#next-steps">Next Steps</a>
 - <a href="#author--contact">Author & Contact</a>
 
 ---
@@ -224,14 +224,7 @@ Fare note: `fare_amount` is the base metered fare only. It excludes tips, tolls 
 8. Create a SQL warehouse, then import `dashboard/mobility_dashboard.lvdash.json`, or build the charts from `dashboard_queries/mobility_dashboard_queries.sql`.
 
 ---
-<h2><a class="anchor" id="limitations--next-steps"></a>Limitations & Next Steps</h2>
-
-**Limitations**
-- Ingestion is manual: files are uploaded by hand and the pipeline is started by hand. There is no Azure Data Factory, schedule or alerting.
-- Only the pickup zone is joined; the drop-off zone is not.
-- The date range in the quality rules is fixed to January to March 2024.
-- A null drop-off time is not checked separately.
-- There is no file manifest or checksum log, and the recovery tests (rerun, schema change, corrected file) have not been done yet.
+<h2><a class="anchor" id="next-steps"></a>Next Steps</h2>
 
 **Next steps**
 - Run and document the recovery tests
