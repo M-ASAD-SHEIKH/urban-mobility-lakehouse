@@ -1,0 +1,328 @@
+{
+  "datasets": [
+    {
+      "name": "4ff9588e",
+      "displayName": "monthly_summary",
+      "queryLines": [
+        "SELECT * FROM mobility.gold.monthly_summary"
+      ],
+      "catalog": "mobility",
+      "schema": "gold"
+    },
+    {
+      "name": "eddf2fa0",
+      "displayName": "trips_by_zone",
+      "queryLines": [
+        "SELECT Zone, Borough, total_trips, avg_fare\r\n",
+        "FROM mobility.gold.trips_by_zone\r\n",
+        "ORDER BY total_trips DESC\r\n",
+        "LIMIT 10"
+      ]
+    },
+    {
+      "name": "02581522",
+      "displayName": "trips_by_hour",
+      "queryLines": [
+        "SELECT * FROM mobility.gold.trips_by_hour"
+      ]
+    },
+    {
+      "name": "5089a06f",
+      "displayName": "rejected rows",
+      "queryLines": [
+        "SELECT reject_reason, COUNT(*) AS rejected_rows\r\n",
+        "FROM mobility.silver.trips_quarantine\r\n",
+        "GROUP BY reject_reason"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "a0d42fbd",
+      "displayName": "NYC Taxi Mobility Dashboard",
+      "layout": [
+        {
+          "widget": {
+            "name": "top-zones",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "eddf2fa0",
+                  "fields": [
+                    {
+                      "name": "Zone",
+                      "expression": "`Zone`"
+                    },
+                    {
+                      "name": "sum(total_trips)",
+                      "expression": "SUM(`total_trips`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "showDescription": false,
+                "title": {
+                  "value": "# Top zones",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 1
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Zone",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_trips)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "rejected-records",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "5089a06f",
+                  "fields": [
+                    {
+                      "name": "rejected_rows",
+                      "expression": "`rejected_rows`"
+                    },
+                    {
+                      "name": "reject_reason",
+                      "expression": "`reject_reason`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "# Rejected records",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "rejected_rows",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "reject_reason",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 4,
+            "width": 8,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "44f8f531",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "02581522",
+                  "fields": [
+                    {
+                      "name": "pickup_hour",
+                      "expression": "`pickup_hour`"
+                    },
+                    {
+                      "name": "sum(total_trips)",
+                      "expression": "SUM(`total_trips`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "# Hourly demand",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "pickup_hour",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_trips)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "monthly-totals",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "4ff9588e",
+                  "fields": [
+                    {
+                      "name": "trip_month",
+                      "expression": "`trip_month`"
+                    },
+                    {
+                      "name": "sum(total_trips)",
+                      "expression": "SUM(`total_trips`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "# Monthly totals",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "trip_month",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_trips)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 4,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "canvasBackgroundColor": {
+        "light": "#FCFCFC",
+        "dark": "#1F272D"
+      },
+      "widgetBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#11171C"
+      },
+      "widgetBorderColor": {
+        "light": "#000000"
+      },
+      "fontColor": {
+        "light": "#11171C",
+        "dark": "#E8ECF0"
+      },
+      "selectionColor": {
+        "light": "#2272B4",
+        "dark": "#8ACAFF"
+      },
+      "widgetHeaderAlignment": "LEFT",
+      "textBoxVerticalAlign": "VERTICAL_ALIGN_TOP",
+      "fontSettings": {
+        "widgetTitle": {
+          "fontFamily": "Arial",
+          "fontSize": 10
+        }
+      },
+      "gridLineColor": {
+        "light": "#A7A7A7"
+      },
+      "axisLineColor": {
+        "light": "#F90000"
+      }
+    },
+    "applyModeEnabled": false
+  }
+}
