@@ -209,7 +209,7 @@ Fare note: `fare_amount` is the base metered fare only. It excludes tips, tolls 
 
 ![Lineage: trips_by_zone](screenshots/lineage_trips_by_zone.png)
 ![Lineage: trips_by_hour](screenshots/lineage_trips_by_hour.png)
-![Lineage: monthly_summary](screenshots/lineage_monthly_summary.png)
+![Lineage: monthly_summary](screenshots/monthly_summary-lineage.png.png)
 
 ---
 <h2><a class="anchor" id="how-to-run-this-project"></a>How to Run This Project</h2>
