@@ -1,10 +1,10 @@
-# 🚕 Urban Mobility Lakehouse – NYC Yellow Taxi on Azure Databricks
+# Urban Mobility Lakehouse – NYC Yellow Taxi on Azure Databricks
 
 _Turning raw monthly taxi trip files into clean, governed tables and a dashboard, using a Bronze / Silver / Gold lakehouse built with Lakeflow Declarative Pipelines in PySpark._
 
 ---
 
-## 📌 Table of Contents
+##  Table of Contents
 - <a href="#overview">Overview</a>
 - <a href="#business-problem">Business Problem</a>
 - <a href="#dataset">Dataset</a>
