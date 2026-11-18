@@ -193,11 +193,11 @@ The first three read the Gold tables; Rejected records reads the quarantine tabl
 
 Fare note: `fare_amount` is the base metered fare only. It excludes tips, tolls and extras.
 
-![Mobility Dashboard](screenshots/dashboard.png)
+![Mobility Dashboard](screenshots/Dashboard.png.png)
 
 **Pipeline graph**
 
-![Pipeline graph](screenshots/pipeline_graph.png)
+![Pipeline graph](screenshots/pipeline_graph.png.png)
 
 ---
 <h2><a class="anchor" id="governance--lineage"></a>Governance & Lineage</h2>
@@ -207,8 +207,8 @@ Fare note: `fare_amount` is the base metered fare only. It excludes tips, tolls 
 - The storage account is registered in Unity Catalog with a storage credential (an access connector with a managed identity) and an external location for the `landing-files` container.
 - Lineage is captured automatically from `trips_clean` to each Gold table:
 
-![Lineage: trips_by_zone](screenshots/lineage_trips_by_zone.png)
-![Lineage: trips_by_hour](screenshots/lineage_trips_by_hour.png)
+![Lineage: trips_by_zone](screenshots/trips_by_zone-lineage.png.png)
+![Lineage: trips_by_hour](screenshots/trips_by_hour-lineage.png.png)
 ![Lineage: monthly_summary](screenshots/monthly_summary-lineage.png.png)
 
 ---
