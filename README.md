@@ -193,7 +193,7 @@ The first three read the Gold tables; Rejected records reads the quarantine tabl
 
 Fare note: `fare_amount` is the base metered fare only. It excludes tips, tolls and extras.
 
-![Mobility Dashboard](screenshots/Dashboard.png.png)
+![Mobility Dashboard](dashboard/Dashboard.png.png)
 
 **Pipeline graph**
 
